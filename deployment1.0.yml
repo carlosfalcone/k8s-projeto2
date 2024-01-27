@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app1 # Nome alterado: De php para app1
+  name: app1 
   labels:
-    app: app1 # Nome alterado: De php para app1
+    app: app1 
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app1 # Nome alterado: De php para app1
+      app: app1 
   template:
     metadata:
       labels:
-        app: app1 # Nome alterado: De php para app1
+        app: app1 
     spec:
       containers:
-      - name: app1 # Nome alterado: De php para app1
+      - name: app1 
         image: carlosfalcone/k8s-projeto2:1.0
         imagePullPolicy: Always
         ports:
@@ -66,19 +66,19 @@ spec:
       - name: mysql-dados1
         persistentVolumeClaim:
           claimName: mysql-dados2
-      
-      env: # Bloco incluido
-          - name: MYSQL_ROOT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: my-secret
-                key: MYSQL_ROOT_PASSWORD
+            
+      env: # Bloco alterado para usar o secrets do github actions
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ secrets.MYSQL_ROOT_PASSWORD }} 
+              key: MYSQL_ROOT_PASSWORD
           
-          - name: MYSQL_DATABASE
-            valueFrom:
-              secretKeyRef:
-                name: my-secret
-                key: MYSQL_DATABASE
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: {{ secrets.MYSQL_DATABASE }} 
+              key: MYSQL_DATABASE
 
 ---
 apiVersion: v1
