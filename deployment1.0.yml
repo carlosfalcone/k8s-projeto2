@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1 # Nome alterado: De php para app1
+  labels:
+    app: app1 # Nome alterado: De php para app1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app1 # Nome alterado: De php para app1
+  template:
+    metadata:
+      labels:
+        app: app1 # Nome alterado: De php para app1
+    spec:
+      containers:
+      - name: app1 # Nome alterado: De php para app1
+        image: carlosfalcone/k8s-projeto2:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-dados1
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard-rwo
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:latest #linha alterada. Antes era uma imagem customizada
+        args:
+        - "--ignore-db-dir=lost+found"
+        imagePullPolicy: Always
+        name: mysql
+        ports:
+        - containerPort: 3306
+          name: mysql
+
+        volumeMounts:
+        - name: mysql-dados1
+          mountPath: /var/lib/mysql/
+      volumes:
+      - name: mysql-dados1
+        persistentVolumeClaim:
+          claimName: mysql-dados2
+      
+      env: # Bloco incluido
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: my-secret
+                key: MYSQL_ROOT_PASSWORD
+          
+          - name: MYSQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: my-secret
+                key: MYSQL_DATABASE
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-connection
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+  clusterIP: None
