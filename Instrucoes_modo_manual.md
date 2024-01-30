@@ -1,9 +1,9 @@
 ## Construção da arquitetura da aplicação e banco de dados
 
 1 - Arquitetura proposta para estudo:
-    - VM vagrant para realizar o build e push das imagens docker
+    - VM vagrant para realizar o build e push das imagens docker (Execução dos arquivos remotos, carregados no github)
     - Minikube para geração do cluster kubernetes
-    - Powershell para controle do kubernetes (kubectl)
+    - Powershell para controle do kubernetes (kubectl) (Execuçao dos arquivos locais, os mesmos carregados no repositório remoto do github)
 
 2 - Abra a VM vagrant. Ela irá entrar na pasta do usuário (/home/vagrant)
 
@@ -62,6 +62,9 @@
 
 21 - Para verificar o seu banco de dados, entre no pod do mysql e verifique os dados usando o comando mysql:
     kubectl exec --stdin --tty  [nome-do-container-mysql] -- /bin/bash
+    mysql -u root -p
+    Entre com a senha
+    Entre com os comandos SQL (use meubanco;) (show tables;) (etc...)
 
 
 ## Utilização recorrente da arquitetura
