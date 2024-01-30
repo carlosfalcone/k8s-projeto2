@@ -23,6 +23,19 @@ spec:
 
 
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-dados3
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard-rwo
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -45,6 +58,27 @@ spec:
         ports:
         - containerPort: 3306
           name: mysql
+
+        volumeMounts:
+        - name: mysql-dados3
+          mountPath: /var/lib/mysql/
+      volumes:
+      - name: mysql-dados3
+        persistentVolumeClaim:
+          claimName: mysql-dados3
+            
+      # env: # Bloco alterado para usar o secrets do github actions
+      #   - name: MYSQL_ROOT_PASSWORD
+      #     valueFrom:
+      #       secretKeyRef:
+      #         name: {{ secrets.MYSQL_ROOT_PASSWORD }} 
+      #         key: MYSQL_ROOT_PASSWORD
+          
+      #   - name: MYSQL_DATABASE
+      #     valueFrom:
+      #       secretKeyRef:
+      #         name: {{ secrets.MYSQL_DATABASE }} 
+      #         key: MYSQL_DATABASE
 
 ---
 apiVersion: v1

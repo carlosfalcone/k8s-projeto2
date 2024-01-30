@@ -10,6 +10,19 @@
 # echo "Entrando na pasta do projeto"
 # cd k8s-projeto2
 
+# echo "Alternando para usuario root"
+# sudo su -
+
+# echo "Fazendo login no docker hub"
+# echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+# echo "Alterando as permissoes do arquivo de script"
+# sudo chmod +x ./script-docker.sh
+
+# echo "Executando o arquivo de script"
+# ./script-docker.sh
+
+
 echo "Criando as imagens..."
 docker build -t carlosfalcone/projeto2-backfront:1.0 app/.
 docker build -t carlosfalcone/projeto2-database:1.0 database/. 
