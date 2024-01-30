@@ -8,6 +8,6 @@
 @REM kubectl apply -f ./load-balancer.yml
 
 echo "Realizando os deployments..."
-kubectl apply -f ./deployment1.0.yml --record
+kubectl apply -f ./deployment3.0.yml --record
 
 @REM # Nota: use alt z para ajustar o texto dentro da janela da IDE

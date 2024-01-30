@@ -28,11 +28,11 @@
 
 
 echo "Criando as imagens..."
-docker build -t carlosfalcone/projeto2-backfront:2.0 app/.
+docker build -t carlosfalcone/projeto2-backfront:3.0 app/.
 docker build -t carlosfalcone/projeto2-database:1.0 database/. 
 
 echo "Realizando o push das imagens..."
-docker push carlosfalcone/projeto2-backfront:2.0
+docker push carlosfalcone/projeto2-backfront:3.0
 docker push carlosfalcone/projeto2-database:1.0 
 
 # Nota: use alt z para ajustar o texto dentro da janela da IDE
