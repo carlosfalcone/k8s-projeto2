@@ -4,6 +4,10 @@
 # Criar uma VM vagrant para gerar as imagens e carrega-las no repositorio docker hub
 
 # # Essa parte de baixar do github vou tentar fazer depois pelo github actions
+
+# echo "deletando a pasta já existente"
+# sudo rm -Rf ./k8s-projeto2/
+
 # echo "Baixando os arquivos do projeto atraves do github"
 # git clone https://github.com/carlosfalcone/k8s-projeto2.git
 
