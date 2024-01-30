@@ -48,9 +48,7 @@
 
 15 - Verifique se as imagens foram carregadas no docker hub
 
-16 - Volte para o Powershell e execute o script-kubernetes-win.bat (script para windows). Ele irá fazer o deployment do aplicativo e banco de dados
-    
-16 - Faça o deployment das imagens do docker carregadas anteriormente dentro dos pods do kubernetes
+16 - Volte para o Powershell e execute o script-kubernetes-win.bat (script para windows). Ele irá fazer o deployment das imagens do docker carregadas anteriormente dentro dos pods do kubernetes
     .\script-kubernetes-win.bat
 
 17 - Verifique se os pods foram carregados
@@ -67,9 +65,9 @@
 
 ## Utilização recorrente da arquitetura
 
-1 - Faça a atualizaçao do projeto: app (frontend: index, css ou js / backend: *.php) ou bancodedados (sql)
+1 - Faça a atualizaçao do projeto, usando o vscode: app (frontend: index, css ou js / backend: *.php) ou bancodedados (sql)
 
-2 - Faça a atualizaçao das versões:
+2 - Faça a atualizaçao das versões, usando o vscode:
 2.1 - nome das imagens do docker no build e push dentro do arquivo script-docker.sh (opcional)
 2.2 - nome do arquivo de deployment (ex: arquivo deployment1.0.yml)
 2.3 - nome do arquivo de deployment dentro da linha de comando no arquivo script.sh ou script.bat (kubectl apply -f ./deployment1.0.yml --record)
@@ -81,15 +79,11 @@ Estou usando --record para gravar os deploys e com isso tanto o nome do arquivo 
     git commit -m "xxxxx"
     git push -u origin main
 
+4 - Execute do item 5 ao 7 acima
 
-4 - Faça o build e push das novas imagens docker geradas para o repositorio docker (docker hub)
-    ./script-docker.sh
+5 - Execute do item 14 ao 17 acima
 
-5 - Execute do item 5 ao 7 acima
-
-6 - Execute o item 16 acima
-
-7 - Atualize a pagina do browser e insira os dados
+6 - Atualize a pagina do browser e insira os dados
 
 
 

@@ -118,7 +118,8 @@ input:focus, textarea:focus {
 	width: 100%;
 	border: #fbfbfb solid 4px;
 	cursor:pointer;
-	background-color: #3498db;
+	/* background-color: #3498db; */
+	background-color: #34dba3;
 	color:white;
 	font-size:24px;
 	padding-top:22px;
