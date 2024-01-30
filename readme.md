@@ -61,7 +61,7 @@
 20 - Entre com os dados no frontend e clique no botao enviar. Se tudo ocorrer bem, você receberá uma mensagem de que os dados foram salvos.
 
 21 - Para verificar o seu banco de dados, entre no pod do mysql e verifique os dados usando o comando mysql:
-    kubectl exec --stdin --tty  [nome-do-container-mysql] -- /bin/bash
+    kubectl exec --stdin --tty  [nome-do-pod-mysql] -- /bin/bash
     mysql -u root -p
     Entre com a senha
     Entre com os comandos SQL (use meubanco;) (show tables;) (etc...)
