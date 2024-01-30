@@ -1,4 +1,4 @@
-## Construção da arquitetura da aplicação e banco de dados
+## Construção da arquitetura: aplicação e banco de dados
 
 1 - Arquitetura proposta para estudo:
     - VM vagrant para realizar o build e push das imagens docker (Execução dos arquivos remotos, carregados no github)
