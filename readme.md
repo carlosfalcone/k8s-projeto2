@@ -23,7 +23,7 @@
 7 - Entre na pasta deste projeto:
     cd k8s-projeto2
 
-8 - Altere a permissao do arquivo script-docker.sh para poder executá-lo no passo 14:
+8 - Altere a permissao do arquivo script-docker.sh para poder executá-lo no passo 15:
     chmod +x ./script-docker.sh
 
 9 - Abra o powershell e execute o minikube:
@@ -94,7 +94,7 @@ Estou usando --record para gravar os deploys e com isso tanto o nome do arquivo 
     7 - Entre na pasta deste projeto:
         cd k8s-projeto2
 
-    8 - Altere a permissao do arquivo script-docker.sh para poder executá-lo no passo 14:
+    8 - Altere a permissao do arquivo script-docker.sh para poder executá-lo no passo 15:
         chmod +x ./script-docker.sh
 
 5 - Execute do item 15 ao 18 acima:
